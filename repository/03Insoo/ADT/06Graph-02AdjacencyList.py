@@ -1,72 +1,70 @@
-class BTNode:
-    def __init__(self, data, left=None, right=None):
-        self.data=data
-        self.left=left
-        self.right=right
+class UndirectedGraph:
+    def __init__(self):
+        self.adj_list={}
 
-    def preorder(self, node):
-        if node is None:
-            return
-        print(node.data, end=' ')
-        self.preorder(node.left)
-        self.preorder(node.right)
+    def add_vertex(self, vertex):
+        if vertex not in self.adj_list:
+            self.adj_list[vertex]=[]
+            
+    def add_edge(self, v1, v2):
+        if v1 in self.adj_list and v2 in self.adj_list:
+            if v2 not in self.adj_list[v1]:
+                self.adj_list[v1].append(v2)
+            if v1 not in self.adj_list[v2]:
+                self.adj_list[v2].append(v1)
+    
+    def display(self):
+        for vertex, edges in self.adj_list.items():
+            print(f"{vertex}:{edges}")
+    
+    
+    
+    def dfs(self, start_vertex, visited=None):
+        if visited is None:
+            visited=set()
+        visited.add(start_vertex)
+        print(start_vertex, end=' ')
+        
+        for neighbor in self.adj_list[start_vertex]:
+            if neighbor not in visited:
+                self.dfs(neighbor, visited)
+    
+    
+    def bfs(self, start_vertex):
+        visited=set()
+        queue=[start_vertex]
+        visited.add(start_vertex)
+        
+        while queue:
+            current_vertex=queue.pop(0)
+            print(current_vertex, end=' ')
+            
+            for neighbor in self.adj_list[current_vertex]:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
+#
+graph=UndirectedGraph()
+vertices=['A','B','C','D','E']
 
-    def inorder(self,node):
-        if node is None:
-            return
-        self.inorder(node.left)
-        print(node.data, end=' ')
-        self.inorder(node.right)
-        
-    def postorder(self,node):
-        if node is None:
-            return
-        self.postorder(node.left)
-        self.postorder(node.right)
-        print(node.data, end=' ')
-        
-        
-    def count_node(self,node):
-        if node is None:
-            return 0
-        return 1+self.count_node(node.left)+self.count_node(node.right)
-        
-    def calc_height(self,node):
-        if node is None:
-            return -1
-        left_height=self.calc_height(node.left)
-        right_height=self.calc_height(node.right)
-        return 1+max(left_height, right_height)
-        
+for vertex in vertices:
+    graph.add_vertex(vertex)
+
+graph.add_edge('A','B')
+graph.add_edge('A','C')
+graph.add_edge('B','D')
+graph.add_edge('B','E')
+
+print("Undirected Graph adjacency list:")
+graph.display()
+
 
 #
-root=BTNode(1)
-root.left=BTNode(2)
-root.right=BTNode(3)
-root.left.left=BTNode(4)
-root.left.right=BTNode(5)
+print("\nDFS traversal:")
+graph.dfs('A')
 
-
-#
-root=BTNode('A')
-root.left=BTNode('B')
-root.right=BTNode('C')
-
-root.left.left=BTNode('D')
-root.left.right=BTNode('E')
-
-root.right.left=BTNode('F')
-root.right.right=BTNode('G')
-
-print("Preorder Traversal: ")
-root.preorder(root)
-print("\nInorder Traversal: ")
-root.inorder(root)
-print("\nPostorder Traversal: ")
-root.postorder(root)
-
-print("\nTotal number of nodes:", root.count_node(root))
-print("Height of the trees:", root.calc_height(root))
+print("\n\nBFS traversal:")
+graph.bfs('A')
 
 
 
