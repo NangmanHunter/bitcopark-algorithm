@@ -37,22 +37,15 @@ Tree
 
 
 # 
-트리순회
-ㄴ전위순회
-ㄴ중위순회
-ㄴ후위순회
+Traversal
+ㄴPreOrder
+ㄴInOrder
+ㄴPostOrder
+ㄴLevelOrder
 
-전위순회
-PreorderTraversal
-VLR
 
-중위순회
-InorderTraversal
-LVR
 
-후위순회
-PostorderTraversal
-LRV
+
 
 
 #
