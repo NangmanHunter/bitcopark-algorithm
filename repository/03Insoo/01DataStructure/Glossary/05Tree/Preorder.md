@@ -1,6 +1,7 @@
-전위순회
-PreorderTraversal
-Preorder
-PreOrder
-Pre
-VLR
+- 전위순회
+- PreorderTraversal
+- Preorder
+- PreOrder
+- Pre
+- VLR
+- Visit → Left → Right

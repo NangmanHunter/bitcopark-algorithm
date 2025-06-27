@@ -1,6 +1,7 @@
-후위순회
-PostorderTraversal
-Postorder
-PostOrder
-Post
-LRV
+- 후위순회
+- PostorderTraversal
+- Postorder
+- PostOrder
+- Post
+- LRV
+- Left → Right → Visit

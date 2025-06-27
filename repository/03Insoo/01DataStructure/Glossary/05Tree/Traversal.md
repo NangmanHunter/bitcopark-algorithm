@@ -1,4 +1,4 @@
-TreeTraversal
-Traversal
-트리순회
-순회
+- TreeTraversal
+- Traversal
+- 트리순회
+- 순회

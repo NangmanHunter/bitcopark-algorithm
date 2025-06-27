@@ -1,6 +1,7 @@
-중위순회
-InorderTraversal
-Inorder
-InOrder
-In
-LVR
+- 중위순회
+- InorderTraversal
+- Inorder
+- InOrder
+- In
+- LVR
+- Left → Visit → Right
